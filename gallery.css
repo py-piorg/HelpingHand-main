@@ -1,0 +1,15 @@
+.donate-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.donate-card-container h5 {
+  text-align: center;
+}
+
+.donate-card-container p {
+  text-align: center;
+}
