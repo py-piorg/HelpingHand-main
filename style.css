@@ -87,10 +87,6 @@ html {
 .navbarlogo {
     width: 100px;
     height: 100px;
-    margin: -40px 23px;
-    margin-left: -5px;
-    margin-right: -130px;
-    margin-bottom: -42px;
 }
 
 .navbarlogo:hover {
