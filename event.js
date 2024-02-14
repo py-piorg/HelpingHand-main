@@ -1,3 +1,6 @@
+emailjs.init("Xlf09Ip0Ym9vekvI0");
+
+
 function rsvp(eventName) {
   // Collect RSVP information
   var attendeeName = prompt("Please enter your name:");
