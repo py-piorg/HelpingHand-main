@@ -12,7 +12,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Image Gallery
-      const imageDirectory = "gallery/";
+      const imageDirectory = "./gallery/";
       fetch(imageDirectory)
         .then(response => response.text())
         .then(text => {
@@ -49,7 +49,7 @@
         .catch(error => console.error("Error fetching images:", error));
 
       // Video Gallery
-      const videoDirectory = "videos/";
+      const videoDirectory = "./videos/";
       fetch(videoDirectory)
         .then(response => {
           if (!response.ok) {
