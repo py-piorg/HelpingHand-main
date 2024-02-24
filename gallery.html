@@ -1,113 +1,479 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image and Video Gallery</title>
-  <!-- Add AOS library -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-</head>
-<body>
-  <!-- JavaScript code to dynamically generate the galleries -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dimension Abundant Life Ministries</title>
+  <link href="//vjs.zencdn.net/8.3.0/video-js.min.css" rel="stylesheet">
+  <script src="//vjs.zencdn.net/8.3.0/video.min.js"></script>
+
+  <link rel="icon" href="images/hand.png" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet" />
+
+  <!-- Font Awesome cdns -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Image Gallery
-      const imageDirectory = "./gallery/";
-      fetch(imageDirectory)
-        .then(response => response.text())
-        .then(text => {
-          const imageFilenames = text.match(/(IMG-\d{8}-WA\d{4}\.(jpg|jpeg|png|gif))/g);
-          if (imageFilenames && imageFilenames.length > 0) {
-            imageFilenames.forEach((filename, index) => {
-              const imageUrl = imageDirectory + filename;
-              const imageIndex = index + 1;
-              const imageDiv = document.createElement("div");
-              imageDiv.classList.add("col-md-4");
-              imageDiv.setAttribute("data-aos", "zoom-in");
-              imageDiv.setAttribute("data-aos-duration", "1000");
-              const cardDiv = document.createElement("div");
-              cardDiv.classList.add("card");
-              const img = document.createElement("img");
-              img.src = imageUrl;
-              img.classList.add("card-img-top");
-              img.alt = "Image " + imageIndex;
-              const cardBody = document.createElement("div");
-              cardBody.classList.add("card-body");
-              const cardTitle = document.createElement("h5");
-              cardTitle.classList.add("card-title");
-              cardTitle.textContent = "Image " + imageIndex;
-              cardBody.appendChild(cardTitle);
-              cardDiv.appendChild(img);
-              cardDiv.appendChild(cardBody);
-              imageDiv.appendChild(cardDiv);
-              document.getElementById("imageGallery").appendChild(imageDiv);
-            });
-          } else {
-            console.error("No image files found.");
-          }
-        })
-        .catch(error => console.error("Error fetching images:", error));
+    AOS.init();
+  </script>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <!-- AOS.js -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!--External CSS-->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="gallery.css" />
+</head>
 
-      // Video Gallery
-      const videoDirectory = "./videos/";
-      fetch(videoDirectory)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to fetch videos: ' + response.status);
-          }
-          return response.text();
-        })
-        .then(text => {
-          const videoFilenames = text.match(/(VID-\d{8}-WA\d{4}\.(mp4|webm|ogg))/g);
-          if (videoFilenames && videoFilenames.length > 0) {
-            videoFilenames.forEach((filename, index) => {
-              const videoUrl = videoDirectory + filename;
-              const videoIndex = index + 1;
-              const videoDiv = document.createElement("div");
-              videoDiv.classList.add("col-md-4");
-              videoDiv.setAttribute("data-aos", "zoom-in");
-              videoDiv.setAttribute("data-aos-duration", "1000");
-              const videoElem = document.createElement("video");
-              videoElem.src = videoUrl;
-              videoElem.classList.add("card-img-top");
-              videoElem.controls = true;
-              videoElem.setAttribute("alt", "Video " + videoIndex);
-              const videoBody = document.createElement("div");
-              videoBody.classList.add("card-body");
-              const videoTitle = document.createElement("h5");
-              videoTitle.classList.add("card-title");
-              videoTitle.textContent = "Video " + videoIndex;
-              videoBody.appendChild(videoTitle);
-              videoDiv.appendChild(videoElem);
-              videoDiv.appendChild(videoBody);
-              document.getElementById("videoGallery").appendChild(videoDiv);
-            });
-          } else {
-            console.error("No video files found.");
-          }
-        })
-        .catch(error => console.error(error.message));
+<body>
+  <!--***** Back to top button *****-->
+  <a title="scroll to top" id="button"></a>
 
-      // Initialize AOS after the galleries are generated
-      if (document.getElementById("imageGallery") || document.getElementById("videoGallery")) {
-        AOS.init();
-      }
-    });
+  <!--***** Nav Bar *****-->
+  <!--***** Nav Bar *****-->
+  <nav class="navbar navbar-expand-lg">
+    <a href="#title"><img src="images/logo.png" alt="HelpingHand_Logo" class="navbarlogo" /></a>
+    <a class="navbar-brand" href="index.html">Dimension Abundant Life Ministries</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fas fa-bars"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link px-2" href="index.html#title"><i class="fas fa-home"></i>&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" href="index.html#features"><i class="fas fa-bullseye"></i>&nbsp;Mission</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" href="index.html#faq"><i class="fas fa-question"></i>&nbsp;FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" href="index.html#contact"><i class="fas fa-envelope"></i>&nbsp;Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" href="education.html"><i class="fas fa-bullseye"></i>&nbsp;Our Goals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" href="gallery.html"><i class="fas fa-bullseye"></i>&nbsp;Gallery</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <!--************* Gallery *************-->
+  <div class="container">
+    <h1 class="text-center">Our Gallery</h1>
+    <h1> </h1>
+    <h1> </h1>
+    <h1> </h1>
+    <h1> </h1>
+
+    <div class="row">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0000.jpg" class="card-img-top" alt="Image 1">
+          <div class="card-body">
+            <h5 class="card-title">Image 1</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0001.jpg" class="card-img-top" alt="Image 2">
+          <div class="card-body">
+            <h5 class="card-title">Image 2</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0009.jpg" class="card-img-top" alt="Image 3">
+          <div class="card-body">
+            <h5 class="card-title">Image 3</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0010.jpg" class="card-img-top" alt="Image 4">
+          <div class="card-body">
+            <h5 class="card-title">Image 4</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0011.jpg" class="card-img-top" alt="Image 5">
+          <div class="card-body">
+            <h5 class="card-title">Image 5</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0013.jpg" class="card-img-top" alt="Image 6">
+          <div class="card-body">
+            <h5 class="card-title">Image 6</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0015.jpg" class="card-img-top" alt="Image 7">
+          <div class="card-body">
+            <h5 class="card-title">Image 7</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0016.jpg" class="card-img-top" alt="Image 8">
+          <div class="card-body">
+            <h5 class="card-title">Image 8</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0021.jpg" class="card-img-top" alt="Image 9">
+          <div class="card-body">
+            <h5 class="card-title">Image 9</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0022.jpg" class="card-img-top" alt="Image 10">
+          <div class="card-body">
+            <h5 class="card-title">Image 10</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0025.jpg" class="card-img-top" alt="Image 11">
+          <div class="card-body">
+            <h5 class="card-title">Image 11</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0027.jpg" class="card-img-top" alt="Image 12">
+          <div class="card-body">
+            <h5 class="card-title">Image 12</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0029.jpg" class="card-img-top" alt="Image 13">
+          <div class="card-body">
+            <h5 class="card-title">Image 13</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0030.jpg" class="card-img-top" alt="Image 14">
+          <div class="card-body">
+            <h5 class="card-title">Image 14</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0032.jpg" class="card-img-top" alt="Image 15">
+          <div class="card-body">
+            <h5 class="card-title">Image 15</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0035.jpg" class="card-img-top" alt="Image 16">
+          <div class="card-body">
+            <h5 class="card-title">Image 16</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0037.jpg" class="card-img-top" alt="Image 17">
+          <div class="card-body">
+            <h5 class="card-title">Image 17</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0038.jpg" class="card-img-top" alt="Image 18">
+          <div class="card-body">
+            <h5 class="card-title">Image 18</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0040.jpg" class="card-img-top" alt="Image 19">
+          <div class="card-body">
+            <h5 class="card-title">Image 19</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0049.jpg" class="card-img-top" alt="Image 20">
+          <div class="card-body">
+            <h5 class="card-title">Image 20</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0055.jpg" class="card-img-top" alt="Image 21">
+          <div class="card-body">
+            <h5 class="card-title">Image 21</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0058.jpg" class="card-img-top" alt="Image 22">
+          <div class="card-body">
+            <h5 class="card-title">Image 22</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="card">
+          <img src="gallery/IMG-20231123-WA0061.jpg" class="card-img-top" alt="Image 23">
+          <div class="card-body">
+            <h5 class="card-title">Image 23</h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <video id="my-player" class="video-js" controls preload="auto"  data-setup='{}'>
+    <source src="videos/vid1.mp4" type="video/mp4">
+    </source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p>
+  </video>
+
+  <video id="my-player" class="video-js" controls preload="auto"  data-setup='{}'>
+    <source src="videos/vid2.mp4" type="video/mp4">
+    </source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a 
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p>
+  </video>
+  <video id="my-player" class="video-js" controls preload="auto" data-setup='{}'>
+    <source src="videos/vid3.mp4" type="video/mp4">
+    </source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p>
+  </video>
+  <video id="my-player" class="video-js" controls preload="auto"  data-setup='{}'>
+    <source src="videos/vid4.mp4" type="video/mp4">
+    </source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p>
+  </video>
+  <video id="my-player" class="video-js" controls preload="auto"  data-setup='{}'>
+    <source src="videos/vid5.mp4" type="video/mp4">
+    </source>
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">
+        supports HTML5 video
+      </a>
+    </p>
+  </video>
+  <div class="donate-card-container" data-aos="zoom-in" data-aos-duration="1000">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="gallery/mission.jpg" class="card-img-top" alt="Donate Today!">
+        <div class="card-body">
+          <h5 class="card-title">Donate Today!</h5>
+          <p class="card-text">Your support can help us fulfill our mission! Thank you, and God
+            bless!</p>
+          <a href="https://www.gofundme.com/f/akyease-dida-methodist-jhs/donate" class="btn btn-primary" role="button"
+            target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+            </svg> Donate</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--************* Footer ********** -->
+
+  <footer id="dk-footer">
+    <div class="container">
+      <div class="sec Aboutus">
+        <h2>Dimension Abundant Life Ministries</h2>
+        <span class="animate-border border-black"></span>
+
+        <div class="footer-detail">
+          g <p>
+            “None of us, including me, ever do great things. But we can all do
+            small things, with great love, and together we can do something
+            wonderful. Just together.”
+          </p>
+        </div>
+      </div>
+
+      <!-- End Col -->
+      <div class="sec QuickLinks">
+        <h2>About Us</h2>
+        <u1>
+          <li><a href="#title">Home</a></li>
+          <li><a href="#features">Mission</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </u1>
+      </div>
+
+      <!-- End col -->
+      <div class="sec section-heading">
+        <h2>Contact Us</h2>
+        <p>Having some questions? Don’t miss your problem</p>
+
+        <form action="#">
+          <div class="sec form-row">
+            <div class="col dk-footer-form">
+              <input type="email" class="form-control" placeholder="Email Address" />
+
+              <button type="submit" id="gmailus" value="mailto: titanic220am@gmail.com">
+                <i class="fa fa-send"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="sec">Psalm 96 1:9
+        <h2>Follow Us</h2>
+        <li>
+          <a href="mailto: titanic220am@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- End Contact Container -->
+    <div class="copyrightText">
+      <p class="p1">“For it is in giving that we receive.”</p>
+      <p class="p2">
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        || Dimension Abundant Life Ministries. All rights reserved
+      </p>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 
-  <!-- Image Gallery -->
-  <h2>Image Gallery</h2>
-  <div class="row" id="imageGallery">
-    <!-- Images will be dynamically added here -->
-  </div>
+  <!-- external js file-->
+  <script src="app.js"></script>
 
-  <!-- Video Gallery -->
-  <h2>Video Gallery</h2>
-  <div class="row" id="videoGallery">
-    <!-- Videos will be dynamically added here -->
-  </div>
-
-  <!-- Include AOS library -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
